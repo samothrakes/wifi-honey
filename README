@@ -20,11 +20,12 @@ In the case of WPA/WPA2, by running airodump-ng along side this you also end up
 capturing the first two packets of the four way handshake and so can attempt to
 crack the key with either aircrack-ng or coWPAtty.
 
-What this script does is to automate the setup process, it creates five monitor
-mode interfaces, four are used as APs and the fifth is used for airodump-ng. To
-make things easier, rather than having five windows all this is done in a screen
-session which allows you to switch between screens to see what is going on. All
-sessions are labelled so you know which is which.
+What this script does is to automate the setup process. To make things easier, 
+rather than having five windows all this is done in a screen session which
+allows you to switch between screens to see what is going on. All sessions are
+labelled so you know which is which.
+
+The script should be run using an interface in monitor mode.
 
 Installation
 ============
@@ -45,7 +46,7 @@ impersonate.
 You can also specify the channel to use and the interface you want to base the
 whole lot on:
 
-./wifi_honey.sh fake_wpa_net 1 wlan1
+./wifi_honey.sh fake_wpa_net 1 wlo1mon
 
 The only other thing I can think of is that you should be in the directory with
 the wifi_honey_template.rc file in it otherwise it will fail when trying to

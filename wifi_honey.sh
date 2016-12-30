@@ -11,7 +11,7 @@ then
 	echo "Usage: $0 <essid> <channel> <interface>"
 	echo
 	echo "Default channel is 1"
-	echo "Default interface is wlan0"
+	echo "Default interface is wlo1mon"
 	echo
 	echo "Robin Wood <robin@digininja.org>"
 	echo "See Security Tube Wifi Mega Primer episode 26 for more information"
@@ -29,19 +29,8 @@ fi
 
 if [[ "$INTERFACE" == "" ]]
 then
-	INTERFACE="wlan0"
+	INTERFACE="wlo1mon"
 fi
 
-x=`iwconfig mon4`
-
-if [[ "$x" == "" ]]
-then
-	airmon-ng start $INTERFACE 1
-	airmon-ng start $INTERFACE 1
-	airmon-ng start $INTERFACE 1
-	airmon-ng start $INTERFACE 1
-	airmon-ng start $INTERFACE 1
-fi
-
-sed "s/<ESSID>/$ESSID/" wifi_honey_template.rc | sed "s/<CHANNEL>/$CHANNEL/" > screen_wifi_honey.rc
+sed "s/<ESSID>/$ESSID/" wifi_honey_template.rc | sed "s/<CHANNEL>/$CHANNEL/" | sed "s/<INTERFACE>/$INTERFACE/" > screen_wifi_honey.rc
 screen -c screen_wifi_honey.rc
